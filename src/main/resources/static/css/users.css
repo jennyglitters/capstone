@@ -1,0 +1,33 @@
+/* User Management-specific styles */
+.users-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.users-table {
+    margin-top: 20px;
+}
+
+.users-table th {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.users-table td {
+    vertical-align: middle;
+}
+
+.modal-form .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-form label {
+    font-weight: bold;
+}
+
+.modal-form input, .modal-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}

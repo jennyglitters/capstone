@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesca Milagrosa - Aqua Farming Solutions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #2a5a8d;
+      --accent-teal: #3aa9a9;
+    }
+
+    .hero-header {
+      background: linear-gradient(rgba(42, 90, 141, 0.9), rgba(42, 90, 141, 0.9)),
+      url('/images/aqua-bg.jpg') center/cover;
+      color: white;
+      padding: 100px 0;
+    }
+
+    .service-card {
+      border: none;
+      transition: transform 0.3s;
+      background: #f8f9fa;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-box {
+      background: var(--primary-blue);
+      color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 1rem;
+    }
+
+    .section-title {
+      color: var(--primary-blue);
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent-teal);
+    }
+  </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Pesca Milagrosa</a>
+    <div class="navbar-nav ms-auto">
+      <a href="/login" class="nav-link">Login</a>
+      <a href="/register" class="nav-link">Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero-header text-center">
+  <div class="container">
+    <h1 class="display-4 mb-3">Quality Aqua Farm & Aquatech Services</h1>
+    <p class="lead">Innovative solutions for sustainable aquaculture</p>
+  </div>
+</header>
+
+<!-- About Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">About Us</h2>
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h3>Dedicated Fish Farming & Aqua Services</h3>
+        <p class="lead">Pesca Milagrosa provides expert aquaculture consulting, technology solutions, and project management services worldwide. We specialize in sustainable sector development and wastewater treatment solutions.</p>
+      </div>
+      <div class="col-md-6">
+        <img src="/images/fish-farm.jpg" alt="Aqua Farming" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title text-center">What We Do</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Live Feed</h5>
+            <p class="card-text">Optimizing aquaculture productivity through advanced feeding solutions.</p>
+            <a href="#" class="btn btn-link text-decoration-none">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Tilapia Fish</h5>
+            <p class="card-text">Sustainable farming solutions for high-value fish species.</p>
+            <a href="#" class="btn btn-link text-decoration-none">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card service-card h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Hatchery Supply</h5>
+            <p class="card-text">Complete hatchery solutions from fingerlings to full-scale operations.</p>
+            <a href="#" class="btn btn-link text-decoration-none">View Details →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">How We Do Fish Farming</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-3">
+        <div class="p-3 border rounded">
+          <h5>1. Research</h5>
+          <p>Advanced species analysis</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-3 border rounded">
+          <h5>2. Implementation</h5>
+          <p>Modern farming techniques</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-3 border rounded">
+          <h5>3. Monitoring</h5>
+          <p>24/7 system oversight</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-3 border rounded">
+          <h5>4. Delivery</h5>
+          <p>Quality assurance & distribution</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

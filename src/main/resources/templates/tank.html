@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tank Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/tanks.css"> <!-- Unified CSS file -->
+</head>
+<body class="bg-light">
+
+<div th:replace="navbar :: navbar"></div>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Tank Management</h2>
+
+    <!-- Error Message -->
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <span th:text="${error}"></span>
+    </div>
+
+    <!-- Tank List -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tank : ${tankList}">
+                    <td th:text="${tank.id}"></td>
+                    <td th:text="${tank.capacity}"></td>
+                    <td>
+                        <a th:href="@{/tank/edit/{id}(id=${tank.id})}" class="btn btn-warning btn-sm">Edit</a>
+                        <!-- Conditionally display delete button for ADMIN and ADVANCED roles -->
+                        <a th:if="${#authentication.authorities.?[authority == 'ROLE_ADMIN' or authority == 'ROLE_ADVANCED'].size() > 0}"
+                           th:href="@{/tank/delete/{id}(id=${tank.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add Tank Form -->
+    <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+            <h3 th:text="${tankDTO.id == null} ? 'Add Tank' : 'Edit Tank'" class="text-center"></h3>
+            <form th:action="@{/tank/save}" method="post" th:object="${tankDTO}">
+                <div class="mb-3">
+                    <label for="id" class="form-label">Tank ID:</label>
+                    <input type="number" class="form-control" id="id" th:field="*{id}" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="capacity" class="form-label">Capacity:</label>
+                    <input type="number" class="form-control" id="capacity" th:field="*{capacity}" required />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a th:href="@{/tank}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

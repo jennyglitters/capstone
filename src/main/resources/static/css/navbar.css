@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #007bff !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffdd57 !important;
+    transform: translateY(-2px);
+}

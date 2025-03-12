@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fish Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fish.css"> <!-- Unified CSS file -->
+</head>
+<body class="bg-light">
+
+<div th:replace="navbar :: navbar"></div>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Fish Management</h2>
+
+    <!-- Error Message -->
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <span th:text="${error}"></span>
+    </div>
+
+    <!-- Fish List -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Species</th>
+                    <th>Quantity</th>
+                    <th>Tank ID</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="fish : ${fishList}">
+                    <td th:text="${fish.id}"></td>
+                    <td th:text="${fish.species}"></td>
+                    <td th:text="${fish.quantity}"></td>
+                    <td th:text="${fish.tank != null} ? ${fish.tank.id} : 'N/A'"></td>
+                    <td>
+                        <a th:href="@{/fish/edit/{id}(id=${fish.id})}" class="btn btn-warning btn-sm">Edit</a>
+                        <a th:if="${#authentication.authorities.?[authority == 'ROLE_ADMIN' or authority == 'ROLE_ADVANCED'].size() > 0}"
+                           th:href="@{/fish/delete/{id}(id=${fish.id})}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit Fish Form -->
+    <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+            <h3 th:text="${fishDTO.id == null} ? 'Add Fish' : 'Edit Fish'" class="text-center"></h3>
+            <form th:action="@{/fish/save}" method="post" th:object="${fishDTO}">
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="mb-3">
+                    <label for="species" class="form-label">Species:</label>
+                    <input type="text" class="form-control" id="species" th:field="*{species}" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity:</label>
+                    <input type="number" class="form-control" id="quantity" th:field="*{quantity}" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="tankId" class="form-label">Tank:</label>
+                    <select class="form-control" id="tankId" th:field="*{tankId}" required>
+                        <option value="">Select a Tank</option>
+                        <option th:each="tank : ${tankList}" th:value="${tank.id}"
+                                th:text="${'Tank ' + tank.id + ' (Capacity: ' + tank.capacity + ')'}"></option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a th:href="@{/fish}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
